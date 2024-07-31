@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Products {
+  id                    String                 @id @default(uuid())
+  Name                  String
+  Price                 Int
+  filePath              String
+  imagePath             String
+  decription            String
+  isAvaiableforPurchase String
+  CreateAt              DateTime               @default(now())
+  UpdateAt              DateTime               @updatedAt
+  Oder                  Oder[]
+  DownloadVerifiCation  DownloadVerifiCation[]
+}
+
+model User {
+  id       String   @id @default(uuid())
+  Name     String
+  CreateAt DateTime @default(now())
+  UpdateAt DateTime @updatedAt
+  Oder     Oder[]
+}
+
+model Oder {
+  id        String   @id @default(uuid())
+  CreateAt  DateTime @default(now())
+  UpdateAt  DateTime @updatedAt
+  userID    String
+  ProductID String
+  user      User     @relation(fields: [userID], references: [id], onDelete: Cascade)
+  Product   Products @relation(fields: [ProductID], references: [id], onDelete: Restrict)
+}
+
+model DownloadVerifiCation {
+  id        String   @id @default(uuid())
+  expriesAt DateTime
+  createAt  DateTime @default(now())
+  productID String
+  product   Products @relation(fields: [productID], references: [id], onDelete: Restrict)
+}
