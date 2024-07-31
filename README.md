@@ -11,6 +11,15 @@ npx prisma migrate dev --name init // Create Database File (.db)
 npx shadcn-ui@latest init // install shadcn
 
 ```bash
+npm install
+npm i --save-dev ts-node
+npm install prisma --save-dev
+npx prisma init --datasource-provider sqlite
+npx prisma migrate dev --name init // Create Database File (.db)
+npx shadcn-ui@latest init // install shadcn
+```
+
+```bash
 npm run dev
 # or
 yarn dev
