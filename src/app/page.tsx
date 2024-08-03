@@ -1,5 +1,9 @@
 import Image from "next/image";
 
 export default function Home() {
-  return <h1> HI </h1>;
+  return (
+    <div className="bg-white">
+      <a href="/admin">GO TO ADMIN PAGE</a>
+    </div>
+  );
 }

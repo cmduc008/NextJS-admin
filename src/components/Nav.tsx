@@ -1,4 +1,4 @@
-"use client";
+"use client"; //render on the client
 import { Children, ComponentProps, ReactNode } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";

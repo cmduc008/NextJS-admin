@@ -17,7 +17,7 @@ model Products {
   filePath              String
   imagePath             String
   decription            String
-  isAvaiableforPurchase String
+  isAvaiableforPurchase Boolean                @default(false)
   CreateAt              DateTime               @default(now())
   UpdateAt              DateTime               @updatedAt
   Oder                  Oder[]
@@ -38,6 +38,7 @@ model Oder {
   UpdateAt  DateTime @updatedAt
   userID    String
   ProductID String
+  Price     Int
   user      User     @relation(fields: [userID], references: [id], onDelete: Cascade)
   Product   Products @relation(fields: [ProductID], references: [id], onDelete: Restrict)
 }
